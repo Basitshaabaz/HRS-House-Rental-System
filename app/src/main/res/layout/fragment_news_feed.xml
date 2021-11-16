@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragments.NewsFeed">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_margin="25dp"
+                android:id="@+id/above_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_profile"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_margin="10dp"
+                android:src="@drawable/ic_profile"
+                app:shapeAppearanceOverlay="@style/square_with_round_shape" />
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/tv_hi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/iv_profile"
+                android:fontFamily="@font/sans_font"
+                android:text="@string/hi"/>
+
+            <TextView
+                android:id="@+id/tv_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_hi"
+                android:layout_toRightOf="@id/iv_profile"
+                android:fontFamily="@font/sans_font"
+                android:textColor="@color/black"
+                android:text="@string/user_name"
+                android:textStyle="bold" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_notification"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_notification"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_margin="10dp"
+                app:shapeAppearanceOverlay="@style/square_with_round_shape" />
+
+            <TextView
+                android:id="@+id/tv_find"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/iv_profile"
+                android:fontFamily="@font/sans_font"
+                android:textSize="30sp"
+                android:textColor="@color/black"
+                android:text="@string/find" />
+
+            <TextView
+                android:id="@+id/tv_best_place"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_find"
+                android:fontFamily="@font/sans_font"
+                android:textSize="30sp"
+                android:text="@string/best_place"/>
+
+            <TextView
+                android:id="@+id/tv_nearby"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_find"
+                android:layout_toEndOf="@id/tv_best_place"
+                android:fontFamily="@font/sans_font"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:textColor="@color/blue_700"
+                android:text="@string/nearby"
+                android:layout_marginLeft="5dp"
+                android:drawableRight="@drawable/ok"/>
+
+        </RelativeLayout>
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/above_rv">
+
+                <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_best_place">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                app:boxStrokeWidth="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/et_user_search_main"
+                app:startIconTint="@color/blue_700"
+                android:layout_margin="10dp"
+                app:startIconDrawable="@drawable/search"
+                android:layout_alignParentTop="true"
+                android:hint="@string/search">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:id="@+id/et_user_search"
+                    android:background="@drawable/et_custom_1"
+                    android:layout_marginRight="40dp"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/filter"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/filter"
+                android:layout_alignRight="@id/et_user_search_main"
+                android:layout_alignParentTop="true"
+                android:tint="@color/blue_700"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_below="@id/et_user_search_main"
+                android:id="@+id/rv_category"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="8dp"
+                android:nestedScrollingEnabled="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+            android:layout_below="@id/rv_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_category2"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+            </RelativeLayout>
+            </androidx.core.widget.NestedScrollView>
+        </RelativeLayout>
+
+
+</FrameLayout>

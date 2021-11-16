@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1077906373513",
+    "project_id": "hrs-house-rental-system",
+    "storage_bucket": "hrs-house-rental-system.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1077906373513:android:e1772b2bddd17193133f58",
+        "android_client_info": {
+          "package_name": "com.example.hrshouserentalsystem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1077906373513-mrpq8s2gt2j02ohmg9rtgst1n5kt7jg1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNABG_CruheoOre2TTPTZRROZVmFuR6MU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1077906373513-mrpq8s2gt2j02ohmg9rtgst1n5kt7jg1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

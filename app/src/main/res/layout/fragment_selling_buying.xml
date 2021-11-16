@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.SellingBuying">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/iv_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_back"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="20dp"/>
+    <ImageView
+        android:id="@+id/iv_favorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_favorite"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="20dp"/>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/iv_back"
+        android:layout_above="@id/btn_sell"
+        >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/iv_back">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_image"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_alignParentTop="true"
+            android:layout_margin="10dp"
+            app:cardCornerRadius="18dp">
+
+            <ImageView
+                android:id="@+id/iv_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_profile" />
+        </androidx.cardview.widget.CardView>
+
+        <EditText
+            android:id="@+id/et_main_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cv_image"
+            android:layout_marginStart="15dp"
+            android:fontFamily="@font/sans_font"
+            android:hint="Main Title"
+            android:inputType="textCapWords"
+            android:textColor="@color/black"
+            android:background="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/et_sub_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/et_main_title"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="15dp"
+            android:fontFamily="@font/sans_font"
+            android:inputType="textCapWords"
+            android:maxLength="18"
+            android:background="@color/white"
+            android:hint="Sub Title"
+            android:textColorHint="@color/gray_700"
+            android:textColor="@color/gray_700"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:id="@+id/ll_icons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/et_sub_title"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="2"
+            android:orientation="horizontal"
+            android:layout_marginStart="15dp"
+            android:weightSum="10">
+
+            <EditText
+                android:id="@+id/et_room_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:inputType="phone"
+                android:digits="1234567890"
+                android:maxLength="2"
+                android:drawableStart="@drawable/bed"
+                android:drawableTint="@color/gray_700"
+                android:gravity="center"
+                android:background="@color/white"
+                android:hint="5"
+                android:textColorHint="@color/gray_700"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/et_bathroom_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@color/white"
+                android:drawableStart="@drawable/bathtub"
+                android:drawableTint="@color/gray_700"
+                android:gravity="center"
+                android:hint="5"
+                android:textColorHint="@color/gray_700"
+                android:inputType="phone"
+                android:digits="1234567890"
+                android:maxLength="2"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/et_washing_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:drawableStart="@drawable/washing_machine"
+                android:drawableTint="@color/gray_700"
+                android:gravity="center"
+                android:hint="5"
+                android:inputType="phone"
+                android:digits="1234567890"
+                android:maxLength="2"
+                android:textColorHint="@color/gray_700"
+                android:background="@color/white"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+            <EditText
+                android:id="@+id/et_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:drawableStart="@drawable/star"
+                android:gravity="center"
+                android:hint="5"
+                android:inputType="phone"
+                android:digits="1234567890."
+                android:maxLength="2"
+                android:textColorHint="@color/gray_700"
+                android:background="@color/white"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <Spinner
+                android:id="@+id/type_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"/>
+
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/et_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_icons"
+            android:drawableStart="@drawable/dollar"
+            android:drawableTint="@color/blue_700"
+            android:hint="1,000"
+            android:background="@color/white"
+            android:layout_marginStart="15dp"
+            android:textColor="@color/blue_700"
+            android:textSize="18sp"
+            android:inputType="phone"
+            android:digits="1234567890"
+            android:maxLength="10"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Description:"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/et_price"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:fontFamily="@font/sans_font"
+            android:id="@+id/tv_description"/>
+
+        <EditText
+            android:id="@+id/et_description1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_description"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="14dp"
+            android:layout_marginBottom="14dp"
+            android:background="@color/white"
+            android:fontFamily="@font/sans_font"
+            android:hint="@string/lorem_ipsum"
+            android:inputType="textMultiLine"
+            android:textColor="@color/black"
+            android:gravity="start"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/iv_profile"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:scaleType="centerCrop"
+            android:layout_below="@id/et_description1"
+            android:layout_marginStart="15dp"
+            android:src="@drawable/ic_profile" />
+
+        <TextView
+            android:id="@+id/tv_username"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/et_description1"
+            android:layout_toRightOf="@id/iv_profile"
+            android:fontFamily="@font/sans_font"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/user_name"
+            android:textColor="@color/black" />
+
+    </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+    <Button
+        android:id="@+id/btn_sell"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/et_custom_1"
+        android:text="SELL NOW"
+        android:fontFamily="@font/sans_font"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"/>
+
+</RelativeLayout>
+
+</FrameLayout>
