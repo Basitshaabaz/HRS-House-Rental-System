@@ -109,8 +109,10 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/et_user_search_main"
                 app:startIconTint="@color/blue_700"
+                android:gravity="center_vertical"
                 android:layout_margin="10dp"
                 app:startIconDrawable="@drawable/search"
+                app:boxBackgroundMode="none"
                 android:layout_alignParentTop="true"
                 android:hint="@string/search">
 

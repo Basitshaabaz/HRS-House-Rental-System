@@ -29,7 +29,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/iv_back"
-        android:layout_above="@id/btn_sell"
         >
     <RelativeLayout
         android:layout_width="match_parent"
@@ -237,19 +236,23 @@
             android:text="@string/user_name"
             android:textColor="@color/black" />
 
+        <Button
+            android:id="@+id/btn_sell"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/et_custom_1"
+            android:text="SELL NOW"
+            android:layout_below="@id/iv_profile"
+            android:fontFamily="@font/sans_font"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="@dimen/dp_size_10"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            />
+
     </RelativeLayout>
+
     </androidx.core.widget.NestedScrollView>
-    <Button
-        android:id="@+id/btn_sell"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/et_custom_1"
-        android:text="SELL NOW"
-        android:fontFamily="@font/sans_font"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"/>
 
 </RelativeLayout>
 

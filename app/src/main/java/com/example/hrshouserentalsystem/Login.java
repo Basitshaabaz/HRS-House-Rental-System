@@ -45,12 +45,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener
             Common.currentUser=mAuth.getCurrentUser().getUid();
             startActivity(new Intent(Login.this,Home.class));
             finish();}
-            else
-            {
-                Toast.makeText(Login.this, "Please Verify Your Email", Toast.LENGTH_SHORT).show();
-            }
-
-        }
+                    }
             mBinding.tvRegisterNow.setOnClickListener(this);
             mBinding.btnLogIn.setOnClickListener(this);
             mBinding.tvForgotPassword.setOnClickListener(this);

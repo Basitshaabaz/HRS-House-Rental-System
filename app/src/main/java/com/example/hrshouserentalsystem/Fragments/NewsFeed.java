@@ -1,6 +1,7 @@
 package com.example.hrshouserentalsystem.Fragments;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -54,6 +55,7 @@ public class NewsFeed extends Fragment implements OnItemClickListener
     CustomProgressDialogue mCustomProgressDialogue;
     private ArrayList<Category> categories = new ArrayList<>();
     private ArrayList<Selling> mSellingData = new ArrayList<>();
+    public static Context CONTEXT;
 
 
     //************************************************************
@@ -69,6 +71,7 @@ public class NewsFeed extends Fragment implements OnItemClickListener
     //************************************************************
     {
         super.onCreate(savedInstanceState);
+        CONTEXT = getContext();
 
     }
 
@@ -154,7 +157,7 @@ public class NewsFeed extends Fragment implements OnItemClickListener
 
                         if (value.isEmpty()) {
                             mSellingData.clear();
-                            Toast.makeText(getContext(), "Empty", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CONTEXT, "Empty", Toast.LENGTH_SHORT).show();
                             if (mCustomProgressDialogue.isShowing())
                                 mCustomProgressDialogue.dismiss();
                             adapter1.notifyDataSetChanged();
@@ -175,7 +178,7 @@ public class NewsFeed extends Fragment implements OnItemClickListener
                                 mCustomProgressDialogue.dismiss();
                         }
                         if (mSellingData.isEmpty()) {
-                            Toast.makeText(getContext(), "Empty", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CONTEXT, "Empty", Toast.LENGTH_SHORT).show();
                         }
 
                     }
@@ -189,7 +192,7 @@ public class NewsFeed extends Fragment implements OnItemClickListener
     {
 
 //        Toast.makeText(getContext(), "" + position, Toast.LENGTH_SHORT).show();
-        mCustomProgressDialogue=new CustomProgressDialogue(getContext(),"Logging In...");
+        mCustomProgressDialogue=new CustomProgressDialogue(CONTEXT,"Loading...");
         mCustomProgressDialogue.show();
         switch (position) {
             case 0:
@@ -239,7 +242,7 @@ public class NewsFeed extends Fragment implements OnItemClickListener
                     if (i.getKey().equals(Common.currentUser)) {
                         User user = i.getValue(User.class);
                         mBinding.tvUsername.setText(user.getUserName());
-                        Glide.with(NewsFeed.this)
+                        Glide.with(CONTEXT)
                                 .load(user.getProfile_url()).into(mBinding.ivProfile);
                     }
 

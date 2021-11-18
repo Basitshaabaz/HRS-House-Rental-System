@@ -104,6 +104,7 @@ public class MyAds extends Fragment implements OnItemClickListener
                             if (mCustomProgressDialogue.isShowing())
                                 mCustomProgressDialogue.dismiss();
                             mSellingData.clear();
+                            mBinding.tvNoDataShow.setVisibility(View.VISIBLE);
                             Toast.makeText(getContext(), "Empty", Toast.LENGTH_SHORT).show();
                             adapter.notifyDataSetChanged();
                         }

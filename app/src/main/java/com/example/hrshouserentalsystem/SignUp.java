@@ -63,12 +63,15 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener
         mBinding.tvLogInBack.setOnClickListener(this);
 
         mGetContent = registerForActivityResult(new ActivityResultContracts.GetContent(), result -> {
-            mBinding.ivProfile.setImageURI(null);
-            Glide.with(this)
-                    .load(result)
-                    .transform()
-                    .into(mBinding.ivProfile);
             imageUri = result;
+            if (imageUri!=null) {
+                Glide.with(this)
+                        .load(result)
+                        .into(mBinding.ivProfile);
+
+            }
+            else
+                Glide.with(this).load(R.drawable.ic_profile).into(mBinding.ivProfile);
         });
         mGetPermission = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
             if (result.getResultCode() == SignUp.RESULT_OK) {
@@ -204,27 +207,26 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener
             return;
         }
 
-        writeToFireBase(email, password, userName);
+        uploadImage(email,password,userName);
     }
 
     //************************************************************
-    private void writeToFireBase(String email, String password, String userName)
+    private boolean writeToFireBase(String email, String password, String userName)
     //************************************************************
     {
-        mCustomProgressDialogue=new CustomProgressDialogue(SignUp.this,"Signing Up...");
-        mCustomProgressDialogue.show();
-
+        final Boolean[] check = new Boolean[1];
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        uploadImage(userName, email);
+
                         Objects.requireNonNull(mAuth.getCurrentUser()).sendEmailVerification()
                                 .addOnCompleteListener(task2 -> {
 
                                     if (task2.isSuccessful()) {
-
+                                        check[0] =true;
 
                                     } else {
+                                        check[0]=false;
                                         Toast.makeText(SignUp.this,
                                                 Objects.requireNonNull(task2.getException()).getMessage()
                                                 , Toast.LENGTH_SHORT).show();
@@ -232,6 +234,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener
 
                                 });
                     } else {
+                        check[0]=false;
                         Toast.makeText(SignUp.this,
                                 Objects.requireNonNull(task.getException()).getMessage(),
                                 Toast.LENGTH_SHORT)
@@ -240,6 +243,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener
                             mCustomProgressDialogue.dismiss();
                     }
                 });
+        return  check[0];
     }
 
     @Override
@@ -249,12 +253,13 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener
     }
 
     //************************************************************
-    private void uploadImage(String userName, String email)
+    private void uploadImage(String email, String password,String userName )
     //************************************************************
     {
 
         //=========================================
-
+        mCustomProgressDialogue=new CustomProgressDialogue(SignUp.this,"Signing Up...");
+        mCustomProgressDialogue.show();
 
         //================
         if (imageUri != null) {
@@ -265,6 +270,8 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener
                             if (taskSnapshot.getMetadata().getReference() != null) {
                                 Task<Uri> result = taskSnapshot.getStorage().getDownloadUrl();
                                 result.addOnSuccessListener(uri -> {
+                                    if (!writeToFireBase(email, password, userName))
+                                        return;
                                     String imageUrl = uri.toString();
                                     User user = new User(userName, email, imageUrl);
                                     FirebaseDatabase.getInstance().getReference("Users")
@@ -294,6 +301,8 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener
         }
                             else
             Toast.makeText(this, "Please Select an Image", Toast.LENGTH_LONG).show();
+                            if (mCustomProgressDialogue.isShowing())
+                                mCustomProgressDialogue.dismiss();
 
     }
 

@@ -93,12 +93,14 @@
             app:layout_constraintTop_toBottomOf="@id/cv_title"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
+            app:boxBackgroundMode="none"
             >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
+
                 android:id="@+id/et_user_email"
                 android:background="@drawable/et_custom_1"
                 android:fontFamily="@font/sans_font"
